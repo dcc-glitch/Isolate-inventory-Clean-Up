@@ -1,6 +1,6 @@
 import pandas as pd
 # Isolate Inventory  Shwetha_PWLDRD cleanup ONLY------
-# Load the specific tab from your Excel file
+# Load the specific tab from csv file
 file_path = "Isolates Inventory.xlsx"
 df = pd.read_excel(file_path, sheet_name="Shwetha_PWLDRD")
 
@@ -8,7 +8,7 @@ df = pd.read_excel(file_path, sheet_name="Shwetha_PWLDRD")
 df_cleaned = df.dropna(subset=['Real Isolate ID'])
 df_dedup = df_cleaned.drop_duplicates(subset=['Real Isolate ID'], keep='first')
 
-# Export to your computer
+# Export to computer
 output_file = "Shwetha_PWLDRD_cleaned.csv"
 df_dedup.to_csv(output_file, index=False)
 
@@ -20,7 +20,7 @@ file_path = "Isolates Inventory.xlsx"
 tabs_to_test = ['mCAFEs_RCC_isolations', 'm-CAFEs', 'm-CAFEs SynCom isolates'] #sample data sets for now
 
 print(f"Loading data from: {tabs_to_test}...")
-# safely loads only the tabs we asked for
+# safely loads only the tabs we want
 sheets_dict = pd.read_excel(file_path, sheet_name=tabs_to_test)
 
 combined_data = []
